@@ -1,6 +1,7 @@
 import pytest
+
+from src.file_manager import FileManagerCsv, FileManagerJson
 from src.vacancies import Vacancy
-from src.file_manager import FileManagerJson, FileManagerCsv
 
 
 @pytest.fixture()

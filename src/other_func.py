@@ -1,6 +1,6 @@
-from src.vacancies import Vacancy
 from src.file_manager import FileManagerJson
 from src.hh import HH
+from src.vacancies import Vacancy
 
 
 def user_interaction() -> None:

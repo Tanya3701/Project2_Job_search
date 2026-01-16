@@ -1,6 +1,7 @@
-from src.file_manager import FileManager, FileManagerJson
-from unittest.mock import Mock, patch
 import os
+from unittest.mock import Mock, patch
+
+from src.file_manager import FileManager, FileManagerJson
 
 
 def test_init_file_manager_csv(filename_csv):
