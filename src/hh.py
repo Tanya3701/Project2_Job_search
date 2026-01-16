@@ -46,15 +46,3 @@ class HH(BaseHH, ABC):
         """Метод получения списка вакансий"""
         self._BaseHH__api_connection("vacancies")
         return self.__vacancies
-
-
-if __name__ == "__main__":
-    hh = HH("python")
-    # hh.api_response("../data/vacancies.json")
-    # print(hh.response.json())
-    # print(type(hh.response))
-    # print(hh.read_json("../data/vacancies.json"))
-    # print(hh.api_connection('vacancies'))
-    # print(type(hh.api_connection('vacancies')))
-    print(hh._BaseHH__api_connection('vacancies'))
-#     print(type(hh._BaseHH__getting_vacancies()))
