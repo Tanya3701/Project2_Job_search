@@ -10,9 +10,9 @@ def user_interaction() -> None:
     filter_words = input("Введите ключевые слова для исключения вакансий: ").split()
 
     hh = HH(search_query)
-    hh._BaseHH__getting_vacancies()
+    hh._getting_vacancies()
     vacancy = Vacancy("name", "id_vacancy", 0, 0, "requirement")
-    data_v = hh._BaseHH__api_connection("vacancies")
+    data_v = hh._api_connection("vacancies")
     vacancy.create_vacancy(data_v)
     vacancy.list_dict_vacancies()
     file_manager = FileManagerJson()

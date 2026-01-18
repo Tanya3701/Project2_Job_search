@@ -10,16 +10,17 @@ class BaseHH(ABC):
     pass
 
     @abstractmethod
-    def __api_connection(self, *args, **kwargs):
+    def _api_connection(self, *args, **kwargs):
         """Метод для соединения с API"""
         pass
 
     @abstractmethod
-    def __getting_vacancies(self, *args, **kwargs):
+    def _getting_vacancies(self, *args, **kwargs):
         """Метод получения списка вакансий"""
+        pass
 
 
-class HH(BaseHH, ABC):
+class HH(BaseHH):
     """Класс для работы с платформой hh.ru"""
 
     base_url: str
@@ -30,7 +31,7 @@ class HH(BaseHH, ABC):
         self.__base_url = "https://api.hh.ru"
         self.__params: dict[str, str | int] = {"text": keyword, "per_page": 100}
 
-    def _BaseHH__api_connection(self, endpoint: str) -> Any | None:
+    def _api_connection(self, endpoint: str) -> Any | None:
         """Метод для соединения с API и фильтра данных по ключевому слову"""
         try:
             url = f"{self.__base_url}/{endpoint}"
@@ -42,7 +43,7 @@ class HH(BaseHH, ABC):
             print(e)
             return []
 
-    def _BaseHH__getting_vacancies(self) -> list[dict]:
+    def _getting_vacancies(self) -> list[dict]:
         """Метод получения списка вакансий"""
-        self._BaseHH__api_connection("vacancies")
+        self._api_connection("vacancies")
         return self.__vacancies

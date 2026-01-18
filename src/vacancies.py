@@ -12,6 +12,16 @@ class Vacancy:
     requirement: str
     vacancies: list[dict]
 
+    __slots__ = [
+        "name",
+        "id_vacancy",
+        "salary_from",
+        "salary_to",
+        "requirement",
+        "vacancies",
+        "avg_salary",
+    ]
+
     def __init__(
         self,
         name: str,
@@ -23,18 +33,30 @@ class Vacancy:
         self.vacancies = []
         self.name = name
         self.id_vacancy = id_vacancy
-        self.salary_from = salary_from if salary_from is not None else 0
-        self.salary_to = salary_to if salary_to is not None else 0
+        self.salary_from = salary_from
+        self.salary_to = salary_to
         self.requirement = requirement if requirement else "Без описания"
         self.avg_salary = (
             (salary_to + salary_from) / 2
             if salary_to is not None and salary_from is not None
             else 0
         )
+        self.__validate_from()
+        self.__validate_to()
+
+    def __validate_from(self):
+        if self.salary_from is None:
+            self.salary_from = 0
+
+    def __validate_to(self):
+        if self.salary_to is None:
+            self.salary_to = 0
 
     def __repr__(self) -> str:
-        return (f"Наименование: {self.name}\nID: {self.id_vacancy}\nЗаработная плата: "
-                f"{(self.salary_from + self.salary_to)/2}\nОбщие требования: {self.requirement}\n\n")
+        return (
+            f"Наименование: {self.name}\nID: {self.id_vacancy}\nЗаработная плата: "
+            f"{(self.salary_from + self.salary_to)/2}\nОбщие требования: {self.requirement}\n\n"
+        )
 
     def create_vacancy(self, data: dict) -> list:
         """Добавляет данные"""
