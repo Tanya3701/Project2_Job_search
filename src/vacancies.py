@@ -33,7 +33,11 @@ class Vacancy:
         self.vacancies = []
         self.name = name
         self.id_vacancy = id_vacancy
+        if salary_from is None:
+            salary_from = 0
         self.salary_from = salary_from
+        if salary_to is None:
+            salary_to = 0
         self.salary_to = salary_to
         self.requirement = requirement if requirement else "Без описания"
         self.avg_salary = (
